@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@using MVC_Project.Models.ViewModels
+
+@model List<CatalogoViewModel>
+@*Perchè visualizzo una lista*@
+
+<h2>Catalogo corsi</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search for names.." title="Type in a name">
+
+
+<div class="row md-3 titleBar">
+    <div class="col-md-2"><b>Immagini</b></div>
+    <div class="col-md-4"><b>Prodotti</b></div>
+    <div class="col-md-3"><b>Prezzo</b></div>
+    <div class="col-md-3"><b>Dettagli</b></div>
+</div>
+
+@foreach (CatalogoViewModel x in Model)
+{
+
+    <div class="row md-3 container" id="myTable">
+        <div class="col-md-2 divImg">
+            <img src="@x.ImagePath" class="immagine" /> 
+        </div>
+        <div class="col-md-4" id="title">@x.Title</div>
+        <div class="col-md-3">
+            <div>@x.FullPrice</div><br />
+            <div>@x.CurrentPrice</div>
+        </div>
+        <div class="col-md-3"><a asp-controller="Catalogo" asp-action="Details" asp-route-id="@x.Id" class="btn btn-outline-primary">Dettagli</a></div>
+        
+    </div>
+}
+
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("div");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("div")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

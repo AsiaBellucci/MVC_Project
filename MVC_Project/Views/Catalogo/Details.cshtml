@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+@using MVC_Project.Models.ViewModels
+@model DetailViewModel
+
+<h2>Dettaglio corso @Model.Id</h2>
+
+<div class="row md-3 container ">
+    <div class="col-md-7 description clearFix">
+        <div class="dettaglio">
+            <div>Titolo corso: @Model.Title</div>
+            <div>Durata corso: @Model.TotalCourseDuration</div>
+            <div>Rating corso:@String.Format("{0:0.0}", @Model.Rating)</div>
+        </div>
+        <div class="col-md-3 prices clearFix">
+            <div style="background-color:#ffff66;">@Model.FullPrice</div><br />
+            <div class="priceDel"><del>@Model.CurrentPrice</del></div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        Immagine: <img src="@Model.ImagePath" class="immagine" /><br />
+    </div>
+</div>
