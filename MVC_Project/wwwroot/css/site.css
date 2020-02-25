@@ -71,10 +71,16 @@ body {
 }
 
 
+/*----------------------------------------------MIO----------------------------------------------------*/
+
+.clearFix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 
 @media screen and (max-width: 600px) {
     .immagine {
-        border: 1px solid blue;
         width: 50px;
         height: 100px;
     }
@@ -84,13 +90,11 @@ body {
     }
 }
 
+.col-img{
+    width:150px;
+}
 .immagine {
     max-width: 100%;
     height: auto;
 }
 
-.clearFix::after {
-    content: "";
-    clear: both;
-    display: table;
-}

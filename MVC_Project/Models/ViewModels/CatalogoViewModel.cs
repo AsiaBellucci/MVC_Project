@@ -14,8 +14,8 @@ namespace MVC_Project.Models.ViewModels
         public string Author { get; set; }
         public double Rating { get; set; }
         public Money FullPrice { get; set; }
-        public string Valuta { get; set; }
-        public string ValutaCor { get; set; }
+        //public string Valuta { get; set; }
+        //public string ValutaCor { get; set; }
         public Money CurrentPrice { get; set; }
     }
 }
