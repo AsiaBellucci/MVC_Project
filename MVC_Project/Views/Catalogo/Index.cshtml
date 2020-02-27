@@ -9,34 +9,34 @@
 
 <h2>Catalogo corsi</h2>
 
-<table class="table"  data-filtering="true" data-sorting="true">
-    <thead>
-        <tr>
-            <th data-sortable="false">Immagine</th>
-            <th >Titolo</th>
-            <th data-breakpoints="xs">Prezzo</th>
-            <th data-breakpoints="xs">Rating</th>
-            <th data-sortable="false" data-type="html" >Dettagli</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(CatalogoViewModel c in Model)
-        {
+<div id="filter-form-container">
+    <table class="table table-striped table-bordered footable" data-filtering="true" data-sorting="true">
+        <thead>
             <tr>
-                <td class="col-img"><img src="@c.ImagePath" class="immagine" /></td>
-                <td>@c.Title</td>
-                <td>
-                    <div>
-                        <div>@c.FullPrice</div><br />
-                        <div>@c.CurrentPrice</div>
-                    </div>
-                </td>
-                <td>@String.Format("{0:0.0}", @c.Rating)</td>
-                <td><a asp-controller="Catalogo" asp-action="Details" asp-route-id="@c.Id" class="btn btn-outline-primary">Dettagli</a></td>
+                <th data-sortable="false">Immagine</th>
+                <th>Titolo</th>
+                <th data-breakpoints="xs">Prezzo</th>
+                <th data-breakpoints="xs">Rating</th>
+                <th data-sortable="false" data-type="html">Dettagli</th>
             </tr>
-        }
-    </tbody>
-</table>
-
-
-
+        </thead>
+        <tbody>
+            @foreach (CatalogoViewModel c in Model)
+            {
+                <tr>
+                    <td class="col-img"><img src="@c.ImagePath" class="immagine" /></td>
+                    <td>@c.Title</td>
+                    <td>
+                        <div>
+                            <div>@c.FullPrice</div><br />
+                            <div>@c.CurrentPrice</div>
+                        </div>
+                    </td>
+                    <td>@String.Format("{0:0.0}", @c.Rating)</td>
+                    <td><a asp-controller="Catalogo" asp-action="Details" asp-route-id="@c.Id" class="btn btn-outline-primary">Dettagli</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+</div>

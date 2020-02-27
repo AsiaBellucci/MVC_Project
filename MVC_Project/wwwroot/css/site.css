@@ -98,3 +98,25 @@ body {
     height: auto;
 }
 
+/*.caret {
+    
+}*/
+/*.dropdown-toggle::after {
+    display: none !important;
+    
+}
+.dropup .dropdown-toggle::after{
+    display:none !important;
+}
+.dropright .dropdown-toggle::after{
+    display:none !important;
+}
+.dropright .dropdown-toggle::after{
+    display:none !important;
+}
+.dropleft .dropdown-toggle::after{
+    display:none !important;
+}
+.dropleft .dropdown-toggle::before{
+    display:none !important;
+}*/

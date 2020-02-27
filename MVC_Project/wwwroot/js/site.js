@@ -6,5 +6,5 @@
 
 
 jQuery(function ($) {
-    $('.table').footable();
+	$('.table').footable();
 });
