@@ -7,6 +7,9 @@ namespace MVC_Project.Models.Services.Infrastructure
 {
     public partial class MyCourseDbContext : DbContext
     {
+        //public MyCourseDbContext()
+        //{
+        //}
 
         public MyCourseDbContext(DbContextOptions<MyCourseDbContext> options)
             : base(options)
@@ -16,8 +19,16 @@ namespace MVC_Project.Models.Services.Infrastructure
         public virtual DbSet<Apples> Apples { get; set; }
         public virtual DbSet<Courses> Courses { get; set; }
         public virtual DbSet<Lessons> Lessons { get; set; }
+        public virtual DbSet<Login> Login { get; set; }
 
-        
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                optionsBuilder.UseSqlServer("Server=superdatabaseditest.database.windows.net;Database=Superdatabase;User Id=SuperUser;Password=MarcoGraziottiRegna33;");
+//            }
+//        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -63,6 +74,7 @@ namespace MVC_Project.Models.Services.Infrastructure
                 {
                     builder.Property(money => money.Currency).HasConversion<string>();
                 });
+
                 //entity.Property(e => e.FullPriceAmount)
                 //    .HasColumnName("FullPrice_Amount")
                 //    .HasColumnType("money");
@@ -102,6 +114,21 @@ namespace MVC_Project.Models.Services.Infrastructure
                     .WithMany(p => p.Lessons)
                     .HasForeignKey(d => d.CourseId)
                     .HasConstraintName("FK__Lessons__CourseI__5070F446");
+            });
+
+            modelBuilder.Entity<Login>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Username)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -32,6 +32,7 @@ namespace MVC_Project
             services.AddControllersWithViews();
 
             services.AddTransient<ICourseService, EfCoreCourseService>();
+            services.AddTransient<IUserService, EfCoreLoginService>();
             //services.AddDbContext<MyCourseDbContext>();
 
             services.AddDbContextPool<MyCourseDbContext>(optionBuilder =>
